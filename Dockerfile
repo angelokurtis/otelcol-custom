@@ -6,9 +6,9 @@ ENV CGO_ENABLED 0
 
 RUN apk --update add ca-certificates curl
 WORKDIR /otelcol
-RUN go install go.opentelemetry.io/collector/cmd/builder@v${OTEL_VERSION}
 COPY builder-config.yaml .
-RUN builder --config builder-config.yaml
+RUN curl -Lo ocb https://github.com/open-telemetry/opentelemetry-collector/releases/download/v${OTEL_VERSION}/ocb_${OTEL_VERSION}_linux_amd64 && chmod +x ./ocb
+RUN ./ocb --config builder-config.yaml
 
 FROM scratch
 
