@@ -6,8 +6,8 @@ help: ## This help.
 
 .PHONY: build
 build: ## Build the docker image
-	docker build -t kurtis/otel-collector:v1.0.1 .
+	docker build -t kurtis/otel-collector:v1.0.4 .
 
 .PHONY: publish
 publish: ## Push docker image
-	docker push kurtis/otel-collector:v1.0.1
+	docker push kurtis/otel-collector:v1.0.4

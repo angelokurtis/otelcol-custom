@@ -4,7 +4,7 @@ ENV OTEL_VERSION=0.58.0
 ENV GO111MODULE=on
 ENV CGO_ENABLED 0
 
-RUN apk --update add ca-certificates curl
+RUN apk --update add ca-certificates
 WORKDIR /otelcol
 COPY builder-config.yaml .
 ADD https://github.com/open-telemetry/opentelemetry-collector/releases/download/v${OTEL_VERSION}/ocb_${OTEL_VERSION}_linux_amd64 ocb
