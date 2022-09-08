@@ -1,6 +1,6 @@
-FROM golang:1.18.5-alpine3.16 as builder
+FROM golang:1.18.6-alpine3.16 as builder
 
-ENV OTEL_VERSION=0.58.0
+ENV OTEL_VERSION=0.59.0
 ENV GO111MODULE=on
 ENV CGO_ENABLED 0
 
@@ -21,4 +21,4 @@ COPY --from=builder /otelcol/dist/otelcol /
 COPY otelcol.yaml /etc/otelcol/config.yaml
 ENTRYPOINT ["/otelcol"]
 CMD ["--config", "/etc/otelcol/config.yaml"]
-EXPOSE 4317 55678 55679
+EXPOSE 8889 4317 4318
