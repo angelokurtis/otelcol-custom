@@ -1,6 +1,6 @@
-FROM golang:1.19.1-alpine3.16 as builder
+FROM golang:1.19.3-alpine3.16 as builder
 
-ENV OTEL_VERSION=0.60.0
+ENV OTEL_VERSION=0.64.1
 ENV GO111MODULE=on
 ENV CGO_ENABLED 0
 
