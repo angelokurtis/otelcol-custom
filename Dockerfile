@@ -1,13 +1,13 @@
-FROM golang:1.19.1-alpine3.16 as builder
+FROM golang:1.20.0-alpine3.17 as builder
 
-ENV OTEL_VERSION=0.60.0
+ENV OTELCOL_BUILDER_VERSION=0.70.0
 ENV GO111MODULE=on
 ENV CGO_ENABLED 0
 
 RUN apk --update add ca-certificates
 WORKDIR /otelcol
 COPY builder-config.yaml .
-ADD https://github.com/open-telemetry/opentelemetry-collector/releases/download/v${OTEL_VERSION}/ocb_${OTEL_VERSION}_linux_amd64 ocb
+ADD https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2Fv${OTELCOL_BUILDER_VERSION}/ocb_${OTELCOL_BUILDER_VERSION}_linux_amd64 ocb
 RUN chmod +x ocb && \
     ./ocb --config builder-config.yaml
 
